@@ -11,5 +11,3 @@ _Belmont_ was about a programme of transactions arranged by Lehman Brothers whic
 > The contract documentation is of a purgatorial complexity fitting the programme's name. 
 
 This project seeks to make legal purgatory more bearable. 
-
-## Features
