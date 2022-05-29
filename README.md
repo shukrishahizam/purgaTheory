@@ -2,7 +2,7 @@
 
 ## About
 
-A simple app for creating network graphs which caputures key information on the relationships between different legal entities, which can be displayed in a variety of output formats. 
+A simple app for creating network graphs which encodes key information on the relationships between different legal entities, which can be displayed in a variety of output formats. 
 
 The name, purgaTheory, is from the United Kingdom Supreme Court case which inspired this project: _Belmont Park Investments v BNY Corporate Trustee Services_ \[2011\] UKSC 39. 
 
