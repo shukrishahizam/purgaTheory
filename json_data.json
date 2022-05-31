@@ -1,0 +1,18 @@
+{
+    "nodes": [
+        {"id": 1, "label": "Belmont Park"},
+        {"id": 2, "label": "BNY Corporate Trustee"},
+        {"id": 3, "label": "LBSF"},
+        {"id": 4, "label": "Dante Finance"}
+    ],
+    "links": [
+        {"source": 2, "target": 4, "instrument": "PTD", "label": "custodian of securities for"},
+        {"source": 4, "target": 2, "instrument": "PTD", "label": "receives proceeds of securities from"},
+        {"source": 4, "target": 3, "instrument": "ISDA MA", "label": "pays notes' dues less CE value to"},
+        {"source": 3, "target": 4, "instrument": "ISDA MA", "label": "pays proceeds of securities to"},
+        {"source": 1, "target": 4, "instrument": "Notes", "label": "subscriber of notes from"},
+        {"source": 4, "target": 1, "instrument": "Notes", "label": "pays fixed coupon to"},
+        {"source": 3, "target": 1, "instrument": "transaction", "label": "pays notes + prem to"},
+        {"source": 1, "target": 3, "instrument": "transaction", "label": "sells protection against securities for"}
+    ]
+}
