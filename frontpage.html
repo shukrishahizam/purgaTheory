@@ -1,24 +1,34 @@
 <!DOCTYPE html>
 <html>
     <body>
-        <h1> 
-            Please enter a name of a relevant entity
-        </h1>
-       <form id="entNameForm">
-            <input type="text" name="entNameField" id="entNameField"> 
-            <input type="submit" id="entNameButton">
-       </form>
- 
-        <h2> List of entities</h2>
-        <p id="entList"></p>
-        
-        </script>
+        <div id="entSection">
+            <h1> Please enter a name of a relevant entity</h1>
+            <form id="entNameForm">
+                    <input type="text" name="entNameField" id="entNameField"> 
+                    <input type="submit" id="entNameButton">
+            </form>
+    
+            <h2>List of entities</h2>
+            <p id="entList"></p>
 
-        <h2> Array of entities</h2> 
-        <!-- <p id="entArrayText"></p> -->
-        <button id="confirmEnts">Confirm Entities</button>
-        
+            <button id="confirmEnts">Confirm Entities</button>
+        </div>  
+        <div id="linkSection" style="display: none">
+            <h1>Please enter relationships between entities</h1>
+            <form id="linkForm">
+                <select name="fromEnt" id="fromEnt"> is a
+                </select>
+                <input type="text" name="rln" id="rln" placeholder="e.g. beneficiary of">
+                to <select name="toEnt" id="toEnt">
+                </select>
+                under the <input type="text" name="inst" id="inst" placeholder="e.g. Trust Deed">
+                <input type="submit" id="linkSubmit">
+            </form>
+            <h2>List of relationships</h2>
+            <p id="linkList"></p>
+        </div>
         
     </body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script defer src="frontpage.js"></script>
 </html>
