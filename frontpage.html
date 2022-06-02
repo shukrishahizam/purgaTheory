@@ -2,7 +2,8 @@
 <html>
     <body>
         <div id="entSection">
-            <h1> Please enter a name of a relevant entity</h1>
+            <h1>PurgaTheory</h1>
+            <h2> Please enter a name of a relevant entity</h2>
             <form id="entNameForm">
                     <input type="text" name="entNameField" id="entNameField"> 
                     <input type="submit" id="entNameButton">
@@ -14,18 +15,18 @@
             <button id="confirmEnts">Confirm Entities</button>
         </div>  
         <div id="linkSection" style="display: none">
-            <h1>Please enter relationships between entities</h1>
+            <h2>Please enter relationships between entities</h2>
             <form id="linkForm">
-                <select name="fromEnt" id="fromEnt"> is a
+                <select name="fromEnt" id="fromEnt">
                 </select>
-                <input type="text" name="rln" id="rln" placeholder="e.g. beneficiary of">
+                is a <input type="text" name="rln" id="rln" placeholder="e.g. beneficiary">
                 to <select name="toEnt" id="toEnt">
                 </select>
                 under the <input type="text" name="inst" id="inst" placeholder="e.g. Trust Deed">
                 <input type="submit" id="linkSubmit">
             </form>
-            <h2>List of relationships</h2>
-            <p id="linkList"></p>
+            <h3>List of relationships</h3>
+            <div id="linkList"></div>
         </div>
         
     </body>

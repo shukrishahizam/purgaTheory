@@ -80,9 +80,9 @@ function populateForm() {
 // on submit, add each link to json and clear form
 let linkCount = 0;
 const linkForm = document.getElementById("linkForm")
-linkForm.addEventListener('submit', () => {
-    addLink();
-    listLink();
+linkForm.addEventListener('submit', (event) => {
+    addLink(event);
+    listLink(event);
     linkCount;
 })
 
@@ -90,13 +90,24 @@ function addLink(event) {
     event.preventDefault();
 
     let data = new FormData(event.target); 
-
     nXJSON["links"][linkCount] = {
         source: parseInt(data.get('fromEnt')),
         target: parseInt(data.get('toEnt')), 
         ins: data.get('inst'),
         rln: data.get('rln'),
     };
+}
+
+function listLink(event) {
+    let data = new FormData(event.target); 
+    $('#linkList').append(
+        '<p>',
+        nXJSON['nodes'][nXJSON['links'][nXJSON['links'].length-1]['source']-1]['label'],
+        ' is a ', data.get('rln'), 
+        ' to ', nXJSON['nodes'][nXJSON['links'][nXJSON['links'].length-1]['target']-1]['label'], 
+        ' under the ', data.get('inst'), 
+        '</p>'
+    )
 }
 
 // on submit link, list link
