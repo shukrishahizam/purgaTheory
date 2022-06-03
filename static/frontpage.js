@@ -111,5 +111,22 @@ function listLink(event) {
 }
 
 // on submit, stringify nXJSON and send as a POST request, which will return a url for the image
+// fetch to send JSON
+async function sendData(json){
+    const response = fetch('/process', {
+        method : 'POST',
+        headers : {
+            'Content-Type' : 'application/json'
+        },
+        body : JSON.stringify(json)
+    })
+    .then(json => {
+        console.log('Success:', json);
+    })
+    .catch((error) => {
+        console.error('Error:', error);
+    });
+    return response.text();
+}
 
 // on load, fetch the url and load into page
