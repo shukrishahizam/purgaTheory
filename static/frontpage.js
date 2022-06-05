@@ -83,7 +83,7 @@ const linkForm = document.getElementById("linkForm")
 linkForm.addEventListener('submit', (event) => {
     addLink(event);
     listLink(event);
-    linkCount;
+    linkCount++;
 })
 
 function addLink(event) {
@@ -94,7 +94,7 @@ function addLink(event) {
         source: parseInt(data.get('fromEnt')),
         target: parseInt(data.get('toEnt')), 
         ins: data.get('inst'),
-        rln: data.get('rln'),
+        label: data.get('label'),
     };
 }
 
@@ -103,7 +103,7 @@ function listLink(event) {
     $('#linkList').append(
         '<p>',
         nXJSON['nodes'][nXJSON['links'][nXJSON['links'].length-1]['source']-1]['label'],
-        ' is a ', data.get('rln'), 
+        ' is a ', data.get('label'), 
         ' to ', nXJSON['nodes'][nXJSON['links'][nXJSON['links'].length-1]['target']-1]['label'], 
         ' under the ', data.get('inst'), 
         '</p>'
@@ -111,22 +111,28 @@ function listLink(event) {
 }
 
 // on submit, stringify nXJSON and send as a POST request, which will return a url for the image
-// fetch to send JSON
-async function sendData(json){
-    const response = fetch('/process', {
-        method : 'POST',
-        headers : {
-            'Content-Type' : 'application/json'
-        },
-        body : JSON.stringify(json)
-    })
-    .then(json => {
-        console.log('Success:', json);
-    })
-    .catch((error) => {
-        console.error('Error:', error);
-    });
-    return response.text();
-}
+// fetch to send JSON, returns handle
+const submitGraph = $('#submitGraph')[0];
+submitGraph.addEventListener('click', 
+    async function(){
+        const response = fetch('/process', {
+            method : 'POST',
+            headers : {
+                'Content-Type' : 'application/json'
+            },
+            body : JSON.stringify(nXJSON)
+        })
+        .then(nXJSON => {
+            console.log('Success:', nXJSON);
+        })
+        .catch((error) => {
+            console.error('Error:', nXJSON);
+        });
+    }
+);
+
+
+// FOR SOME REASON HITS PROCESS IMMEDIATELY
+
 
 // on load, fetch the url and load into page

@@ -1,6 +1,10 @@
 from crypt import methods
 from distutils.log import error
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, send_from_directory
+from generategraph import generategraph
+
+
+# IMAGE_FOLDER = '/rendered/'
 
 app = Flask(__name__)
 
@@ -8,15 +12,17 @@ app = Flask(__name__)
 def hello(): 
     return render_template('frontpage.html')
 
-@app.route('process', methods=['POST'])
+@app.route('/process', methods=['POST'])
 def process():
     if request.method == 'POST':
         data = request.get_json()
-        # process JSON here 
+        imagehandle = generategraph(data)
 
-        return # url for image
+        return 'Image generated', 200
     else: 
         return 'Bad Request :(', 400
 
-# @app.route('/rendered/<imagehandle>')
-# def rendered(imagehandle):
+@app.route('/rendered/<imagehandle>')
+def rendered(imagehandle):
+    return send_from_directory('rendered', imagehandle)
+

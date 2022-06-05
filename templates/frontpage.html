@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>    
     <body>
         <div id="entSection">
             <h1>purgaTheory</h1>
@@ -19,7 +20,7 @@
             <form id="linkForm">
                 <select name="fromEnt" id="fromEnt">
                 </select>
-                is a <input type="text" name="rln" id="rln" placeholder="e.g. beneficiary">
+                is a <input type="text" name="label" id="label" placeholder="e.g. beneficiary">
                 to <select name="toEnt" id="toEnt">
                 </select>
                 under the <input type="text" name="inst" id="inst" placeholder="e.g. Trust Deed">
@@ -27,8 +28,22 @@
             </form>
             <h3>List of relationships</h3>
             <div id="linkList"></div>
+            <button id="submitGraph">Confirm List of Relationships</button>
+        </div>
+        <div id ='graphDisplay'>
+            <button id="loadGraph">Load Graph</button>
+            <script>
+                $SCRIPT_ROOT = {{ request.script_root|tojson }};
+                const loadGraph = $('#loadGraph')[0];
+                loadGraph.addEventListener('click', () => {
+                    let image = document.createElement('img');
+                    image.src = 'static/img.png';
+                    image.style = "height:500px;";
+                    $('#graphDisplay').append(image);
+                });
+            </script>
         </div>
     </body>
     <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script defer src={{ url_for('static'), filename='frontpage.js') }}></script>
+    <script defer src={{ url_for('static', filename='frontpage.js') }}></script>
 </html>
